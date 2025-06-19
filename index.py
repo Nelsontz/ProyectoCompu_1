@@ -6,6 +6,7 @@ app=Flask(__name__)
 app.secret_key = 'super_secret_key_para_flash_messages'
 import json
 import os
+
 DATA_FILE = 'data.json' ##aqui se cargaran los registro de cada persoona
 def load_data(): #definicion que nos ayudara a cargar los datos desde el archivo json
     """Carga los registros desde el archivo JSON."""
@@ -62,7 +63,6 @@ def ordenar_registros(registros, criterio_orden='id', orden_desc=False):
 @app.route('/')
 def principal():
     return render_template('index.html')
-
 @app.route('/Registro')
 def Registro():
     return render_template('Registro.html')
@@ -129,7 +129,7 @@ def editar_registro(registro_id):
 
         if not nombre or not edad_str or not ciudad:
             flash('Todos los campos son obligatorios.', 'error')
-            return render_template('edit.html', registro=registro)
+            return render_template('editar.html', registro=registro)
 
         try:
             edad = int(edad_str)
