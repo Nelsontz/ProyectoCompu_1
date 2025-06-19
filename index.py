@@ -6,8 +6,8 @@ app=Flask(__name__)
 app.secret_key = 'super_secret_key_para_flash_messages'
 import json
 import os
-DATA_FILE = 'data.json' 
-def load_data():
+DATA_FILE = 'data.json' ##aqui se cargaran los registro de cada persoona
+def load_data(): #definicion que nos ayudara a cargar los datos desde el archivo json
     """Carga los registros desde el archivo JSON."""
     if os.path.exists(DATA_FILE):
         with open(DATA_FILE, 'r') as f:
@@ -21,7 +21,7 @@ def load_data():
     print(f"DEBUG: {DATA_FILE} no encontrado. Inicializando datos vacios.") # DEBUG
     return {"records": [], "next_id": 1}
 
-def save_data(data):
+def save_data(data):#definicion que nos ayudara a guardar los datos desde el archivo json
     """Guarda los registros en el archivo JSON."""
     with open(DATA_FILE, 'w') as f:
         json.dump(data, f, indent=4)
@@ -43,14 +43,6 @@ def get_next_record_id():
 def ordenar_registros(registros, criterio_orden='id', orden_desc=False):
     """
     Ordena una lista de registros por el criterio especificado.
-
-    Args:
-        registros (list): Lista de diccionarios (registros).
-        criterio_orden (str): Clave del diccionario por la que se ordenara.
-        orden_desc (bool): Si es True, ordena en orden descendente.
-
-    Returns:
-        list: La lista de registros ordenada.
     """
     if not registros:
         return []
@@ -66,13 +58,15 @@ def ordenar_registros(registros, criterio_orden='id', orden_desc=False):
         flash(f"Advertencia: No se pudo ordenar por '{criterio_orden}' debido a tipos de datos inconsistentes.", 'warning')
         return registros
 
-
+#rutas de las paginas
 @app.route('/')
 def principal():
     return render_template('index.html')
+
 @app.route('/Registro')
 def Registro():
     return render_template('Registro.html')
+
 @app.route('/lista')
 def lista():
     """
@@ -162,11 +156,8 @@ def delete_registro(registro_id):
     global registros_db
     registros_db = [r for r in registros_db if r["id"] != registro_id]
     return redirect(url_for('lista'))
-
-@app.route('/Usuario')
-def Usuario():
-    return render_template('Usuario.html')
 @app.route('/Recetas')
+
 def Recetas():
     return render_template('Recetas.html')
 if __name__=="__main__":

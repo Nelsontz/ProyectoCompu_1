@@ -41,7 +41,13 @@
             "nombre": "Nelson",
             "edad": 3,
             "ciudad": "Caracas"
+        },
+        {
+            "id": 10,
+            "nombre": "carp",
+            "edad": 12,
+            "ciudad": "valencia"
         }
     ],
-    "next_id": 10
+    "next_id": 11
 }
