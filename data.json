@@ -1,0 +1,47 @@
+{
+    "records": [
+        {
+            "id": 1,
+            "nombre": "Nelson",
+            "edad": 2,
+            "ciudad": "Caracas"
+        },
+        {
+            "id": 2,
+            "nombre": "Nelson",
+            "edad": 4,
+            "ciudad": "Caracas"
+        },
+        {
+            "id": 3,
+            "nombre": "Nelson",
+            "edad": 3,
+            "ciudad": "Caracas"
+        },
+        {
+            "id": 4,
+            "nombre": "Nelson",
+            "edad": 3,
+            "ciudad": "Caracas"
+        },
+        {
+            "id": 5,
+            "nombre": "Nelson",
+            "edad": 1,
+            "ciudad": "Caracas"
+        },
+        {
+            "id": 6,
+            "nombre": "Nelson",
+            "edad": 1,
+            "ciudad": "Caracas"
+        },
+        {
+            "id": 7,
+            "nombre": "Nelson",
+            "edad": 3,
+            "ciudad": "Caracas"
+        }
+    ],
+    "next_id": 10
+}

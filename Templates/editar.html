@@ -1,0 +1,55 @@
+{% extends './base.html' %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Editar Registro {% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; max-width: 400px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover { background-color: #218838; }
+        .back-link { display: block; margin-top: 20px; text-decoration: none; color: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>Editar Registro (ID: {{ registro.id }})</h1>
+    <form method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ registro.nombre }}" required><br>
+
+        <label for="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" value="{{ registro.apellido}}" required><br>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" value="{{ registro.edad }}" required><br>
+
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" id="ciudad" name="ciudad" value="{{ registro.ciudad }}" required><br>
+
+        <input type="submit" value="Guardar Cambios">
+    </form>
+    <a href="{{ url_for('lista') }}" class="back-link">Volver a la lista</a>
+</body>
+</html>
+{% block body %}
+
+{% endblock %}

@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    
+<html lang="en" data-bs-theme="dark">
+<head> 
+  <script src="https://kit.fontawesome.com/59327e5963.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Proyecto Unexpo</a>
+  <div class="container-fluid">  
+    <a class="navbar-brand" href="/">Doci5</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+     
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
         <a class="nav-link" href="#">Quienes Somos?</a>
-        <a class="nav-link" href="#">Registro</a>
+        <a class="nav-link" href="/Registro">Registro</a>
+        <a class="nav-link" href="/Recetas">Recetas</a>
       </div>
     </div>
   </div>
@@ -34,4 +37,58 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
 
+<footer class="bg-dark text-light pt-5">
+    <div class="container px-5">
+        <div class="row">
+            <div class="col-6 col-lg-4">
+                <h3 class="fw-bold">Doci5</h3>
+                <p class="pt-2">Charallave, Estado Miranda, Venezuela</p>
+                <p class="mb-2">Tlf: 0239-511-0950</p>
+                <p>code: 1011</p>
+            </div>
+            <div class="col">
+                <h4>Menu</h4>
+                <ul class="list-unstyled pt-2">
+                    <li class="py-1">Inicio</li>
+                    <li class="py-1">Quienes Somos?</li>
+                    <li class="py-1">Registro</li>
+                    <li class="py-1">Recetas</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>Mas</h4>
+                <ul class="list-unstyled pt-2">
+                    <li class="py-1">Proveedores</li>
+                    <li class="py-1">FAQs</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h4>Categorias</h4>
+                <ul class="list-unstyled pt-2">
+                    <li class="py-1">Productos</li>
+                    <li class="py-1">Maquinaria</li>
+                    <li class="py-1">Medios y Transporte</li>
+                  
+                </ul>
+            </div>
+            <div class="col-6 col-lg-3 text-lg-end">
+                <h4>Social Media Links</h4>
+                <div class="social-media pt-2">
+                    <a href="https://www.facebook.com/nelson.figuerabacco/" class="text-light fs-2 me-3"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="text-light fs-2 me-3"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#" class="text-light fs-2 me-3"><i class="fa-brands fa-instagram"></i></i></a>
+                    <a href="#" class="text-light fs-2"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="d-sm-flex justify-content-between py-1">
+            <p>2025 © Doci5. Todos los Derechos Reservados. </p>
+            <p>
+                <a href="#" class="text-light text-decoration-none pe-4">Terminos y Usos</a>
+                <a href="#" class="text-light text-decoration-none"> Politica de Privacidad</a>
+            </p>
+        </div>
+    </div>
+</footer>
 </html>

@@ -1,0 +1,131 @@
+{% extends './base.html' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lista de Usuario {% endblock %}</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f7f6; color: #333; }
+        .container { max-width: 900px; margin: 20px auto; background-color: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        h1 { text-align: center; color: #0056b3; margin-bottom: 30px; }
+        .flash-message {
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .flash-message.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .flash-message.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .flash-message.warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 25px; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+        th { background-color: #e9ecef; color: #495057; font-weight: 600; cursor: pointer; }
+        tr:hover { background-color: #f0f2f5; }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 5px 10px 0;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover { background-color: #0056b3; }
+        .button.add { background-color: #28a745; }
+        .button.add:hover { background-color: #218838; }
+        .button.edit { background-color: #007bff; }
+        .button.edit:hover { background-color: #0056b3; }
+        .button.delete { background-color: #dc3545; }
+        .button.delete:hover { background-color: #c82333; }
+
+        .sort-link { text-decoration: none; color: inherit; display: block; width: 100%; height: 100%; }
+        .sort-arrow { float: right; margin-left: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Registros</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <a href="{{ url_for('agregar_registro') }}" class="button add">Añadir Nuevo Registro</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <a href="{{ url_for('lista', ordenar_por='id', orden='asc' if current_order_by == 'id' and current_order_direction == 'desc' else 'desc') }}" class="sort-link">
+                            ID
+                            {% if current_order_by == 'id' %}
+                                <span class="sort-arrow">{% if current_order_direction == 'asc' %}▲{% else %}▼{% endif %}</span>
+                            {% endif %}
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('lista', ordenar_por='nombre', orden='asc' if current_order_by == 'nombre' and current_order_direction == 'desc' else 'desc') }}" class="sort-link">
+                            Nombre
+                            {% if current_order_by == 'nombre' %}
+                                <span class="sort-arrow">{% if current_order_direction == 'asc' %}▲{% else %}▼{% endif %}</span>
+                            {% endif %}
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('lista', ordenar_por='edad', orden='asc' if current_order_by == 'edad' and current_order_direction == 'desc' else 'desc') }}" class="sort-link">
+                            Edad
+                            {% if current_order_by == 'edad' %}
+                                <span class="sort-arrow">{% if current_order_direction == 'asc' %}▲{% else %}▼{% endif %}</span>
+                            {% endif %}
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{{ url_for('lista', ordenar_por='ciudad', orden='asc' if current_order_by == 'ciudad' and current_order_direction == 'desc' else 'desc') }}" class="sort-link">
+                            Ciudad
+                            {% if current_order_by == 'ciudad' %}
+                                <span class="sort-arrow">{% if current_order_direction == 'asc' %}▲{% else %}▼{% endif %}</span>
+                            {% endif %}
+                        </a>
+                    </th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for registro in registros %}
+                <tr>
+                    <td>{{ registro.id }}</td>
+                    <td>{{ registro.nombre }}</td>
+                    <td>{{ registro.edad }}</td>
+                    <td>{{ registro.ciudad }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_registro', registro_id=registro.id) }}" class="button edit">Editar</a>
+                        <a href="{{ url_for('delete_registro', registro_id=registro.id) }}" class="button delete" onclick="return confirm('¿Estas seguro de que quieres eliminar a {{ registro.nombre }}?');">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if not registros %}
+                <tr>
+                    <td colspan="5" style="text-align: center;">No hay registros para mostrar.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+{% endblock %}
